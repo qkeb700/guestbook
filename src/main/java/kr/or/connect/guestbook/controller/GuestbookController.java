@@ -30,7 +30,7 @@ public class GuestbookController {
 	public String list(@RequestParam(name="start", required=false, defaultValue="0") int start, 
 			ModelMap model, @CookieValue(value="count", defaultValue="0", required=true)String value, HttpServletResponse response) {
 		
-		 
+		 	// 받아온 쿠키값을 기본값으로 값이 1씩 증가한다
 			try {
 				int i = Integer.parseInt(value);
 				value = Integer.toString(++i);
@@ -38,7 +38,7 @@ public class GuestbookController {
 				value = "1";
 			}
 		
-		
+		// 쿠키를 객체화하고 키와 value값을 정한다
 		Cookie cookie = new Cookie("count", value);
 		cookie.setMaxAge(60*30);
 		cookie.setPath("/");
